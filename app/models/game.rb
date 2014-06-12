@@ -8,6 +8,47 @@ class Game < ActiveRecord::Base
 	LENGTH_OF_GAME = 1 													#in days
 	TIME_INTERVAL_BETWEEN_ANNOUNCEMENTS = 0 		#in seconds
 
+	def self.destroy_last_game
+		Game.destroy_all
+		Post.destroy_all
+		User.destroy_all
+		Checkin.destroy_all
+		Message.reset_all
+		Ingredient.reset_all
+	end
+
+	def setup
+  	self.messages << Message.all
+  	self.set_code_and_times
+	end
+
+	def initiate
+		self.game_active = true
+		self.started = true
+		self.save
+	end
+
+
+	def show_announcements
+		if self.ready_for_3rd_announcement?
+			self.show_third_location_message
+			ingredient = Ingredient.find(3)
+			ingredient.discovered = true
+			ingredient.save
+		elsif self.ready_for_2nd_announcement?
+			self.show_second_location_message
+			ingredient = Ingredient.find(2)
+			ingredient.discovered = true
+			ingredient.save
+		elsif self.ready_for_1st_announcement?
+			self.show_first_message
+			self.show_first_location_message
+			ingredient = Ingredient.find(1)
+			ingredient.discovered = true
+			ingredient.save
+		end
+	end
+
 	def self.current
 		#assuming there is only one active game
 		Game.find_by_game_active(true)

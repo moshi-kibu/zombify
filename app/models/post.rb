@@ -16,4 +16,16 @@ class Post < ActiveRecord::Base
   		end
   	end
   end
+
+  def self.show_cure_createds
+    cure_zombie = Message.where(title: "Cure created", audience: "zombie")[0]
+    cure_human = Message.where(title: "Cure created", audience: "human")[0]
+
+    Post.create(title: cure_zombie.title, body: cure_zombie.description, audience: "zombie")
+    Post.create(title: cure_human.title, body: cure_human.description, audience: "human")
+    cure_zombie.has_been_called = true
+    cure_zombie.save
+    cure_human.has_been_called = true
+    cure_human.save
+  end
 end

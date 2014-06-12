@@ -35,6 +35,13 @@ class User < ActiveRecord::Base
     num > 75
   end
 
+  def self.all_can_cure
+    User.all.each do |user|
+      user.can_cure = true
+      user.save
+    end
+  end
+
   def password
   end
 

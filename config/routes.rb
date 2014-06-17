@@ -3,6 +3,7 @@ Zombify::Application.routes.draw do
   mount JasmineFixtureServer => '/spec/javascripts/fixtures' if defined?(JasmineRails)
 
   root :to => "users#index"
+  get '/demo' => 'pages#demo', :as => 'demo'
   resources :users
   resources :sessions #, only: [:new, :show, :create, :delete]
   resources :pages, only: [:show]

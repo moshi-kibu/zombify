@@ -447,3 +447,31 @@ html .user_stats span{
     font-size: 18px;
   }
 }
+
+#demo {
+  margin: 15% auto 0 auto;
+  width: 60%;
+  padding-bottom: 5%;
+}
+
+#demo h2 {
+  color: black;
+  margin-top: 1em;
+}
+
+#demo p, #demo li {
+  font-size: 14px;
+}
+
+#demo ul {
+  margin-bottom: 50px;
+}
+
+#demo li {
+  font-family: Tahoma;
+  margin-top: 1em;
+}
+
+#demo iframe {
+  border: 1px solid black;
+}

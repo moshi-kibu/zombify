@@ -16,7 +16,7 @@
 //= require view
 //= require polling
 //= require controllers/battle_controller
-//= require controllers/user_event_controller
+//= require controllers/checkin_controller
 //= require users
 //= require_self
 //=require_tree .

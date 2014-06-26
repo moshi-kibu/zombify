@@ -3,6 +3,7 @@ class Demo
 		zombies = User.where(infected: true)
 		humans = User.where(infected: false)
 		#assumes 4 users, and must be part of game after create_game, but before create_demo
+		
 		while zombies.count > 1
 			zombie = zombies.first
 			zombie.infected = false
@@ -15,6 +16,5 @@ class Demo
 			human.save
 		end	
 	end
-
 
 end

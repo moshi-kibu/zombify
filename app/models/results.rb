@@ -1,25 +1,71 @@
 
 
 class Results
-    RESPONSE_MESSAGES = {
-      human_attack_self: "Attack yourself all you want, I guess...",
-      human_attack_human: "Why are you wasting precious cures?!",
-      zombie_attack_zombie: "Why are you biting each other, Children?",
-      user_converts_H_to_Z: "Mmmmmm....Brainsssss.....You have added to the horde.",
-      user_fail_converts_H_to_Z: "You are feeling dizzy. The human has escaped. You still crave brains... ",
-      successful_cure: "You have successfully applied the cure!",
-      failed_cure: "Your cure has failed. You feel your blood rising and crave delicious brains...",
-      no_cure_attempt: "You do not have the cure! You have been bitten. Brainsssss....",
-      invalid_user_code: "invalid user code"
-    }
+  SCENARIOS = {
+  invalid_user_code: {
+    response_message: "invalid user code",
+  },
+  human_attack_self: {
+    response_message: "Attack yourself all you want, I guess...",
+  },
+  human_attack_human: {
+    response_message: "Why are you wasting precious cures?!",
+  },
+  zombie_attack_zombie: {
+    response_message: "Why are you biting each other, Children?",
+  },
+  user_converts_H_to_Z: {
+    response_message: "Mmmmmm....Brainsssss.....You have added to the horde.",
+    post_message: ["%s has bitten %s","New Zombie"],
+    user_state: [true, 300],
+    opponent_state: [true]
+  },
+  user_fail_converts_H_to_Z: {
+    response_message: "You are feeling dizzy. The human has escaped. You still crave brains... ",
+    post_message: ["%s has escaped %s","Near Miss"],
+    user_state: [true],
+    opponent_state: [false, 100]
+  },
+  successful_cure: {
+    response_message:  "You have successfully applied the cure!",
+    post_message: ["%s has been cured by %s","Human Reversion"],
+    user_state: [false, 500],
+    opponent_state: [false, 500]
+  },
+  failed_cure: {
+    response_message: "Your cure has failed. You feel your blood rising and crave delicious brains...",
+    post_message: ["%s failed a cure attempt on %s","Cure Failed"],
+    user_state: [true],
+    opponent_state: [true, 100]
+  },
+  no_cure_attempt: {
+    response_message: "You do not have the cure! You have been bitten. Brainsssss....",
+    post_message: ["%s has bitten %s","New Zombie"],
+    user_state: [true],
+    opponent_state: [true, 100]
+  }
+}
 
-    POST_MESSAGES = {
-      user_converts_H_to_Z: ["%s has bitten %s","New Zombie"],
-      user_fail_converts_H_to_Z: ["%s has escaped %s","Near Miss"],
-      successful_cure: ["%s has been cured by %s","Human Reversion"],
-      failed_cure: ["%s failed a cure attempt on %s","Cure Failed"],
-      new_zombie: ["%s has bitten %s","New Zombie"]
-    }
+    # RESPONSE_MESSAGES = {
+    #   human_attack_self: "Attack yourself all you want, I guess...",
+    #   human_attack_human: "Why are you wasting precious cures?!",
+    #   zombie_attack_zombie: "Why are you biting each other, Children?",
+    #   user_converts_H_to_Z: "Mmmmmm....Brainsssss.....You have added to the horde.",
+    #   user_fail_converts_H_to_Z: "You are feeling dizzy. The human has escaped. You still crave brains... ",
+    #   successful_cure: "You have successfully applied the cure!",
+    #   failed_cure: "Your cure has failed. You feel your blood rising and crave delicious brains...",
+    #   no_cure_attempt: "You do not have the cure! You have been bitten. Brainsssss....",
+    #   invalid_user_code: "invalid user code"
+    # }
+
+    # POST_MESSAGES = {
+    #   user_converts_H_to_Z: ["%s has bitten %s","New Zombie"],
+    #   user_fail_converts_H_to_Z: ["%s has escaped %s","Near Miss"],
+    #   successful_cure: ["%s has been cured by %s","Human Reversion"],
+    #   failed_cure: ["%s failed a cure attempt on %s","Cure Failed"],
+    #   new_zombie: ["%s has bitten %s","New Zombie"]
+    # }
+
   attr_reader :response
 
   def initialize(user, opponent, user_win)

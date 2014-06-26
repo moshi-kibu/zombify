@@ -4,17 +4,18 @@ var CheckinController = {
     $("#checkin").click(this.initiate_geolocation);
     $("#checkin_mobile").click(this.initiate_geolocation);
   },
+
   initiate_geolocation: function() {
     navigator.geolocation.getCurrentPosition(CheckinController.handle_geolocation_query, CheckinController.handle_errors);
   },
+
   handle_geolocation_query: function(e){
     console.log(e)
     var userLat = e.coords.latitude
     var userLong = e.coords.longitude
     CheckinController.compareLocation(userLat, userLong)
-
-
   }, 
+  
   handle_errors: function(error){
   switch(error.code)
     {

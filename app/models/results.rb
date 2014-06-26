@@ -46,6 +46,26 @@ class Results
   }
 }
 
+def determine_scenario
+  return :invalid_user_code if @opponent == "invalid"
+  return :human_attack_self if @opponent == @user
+  return :zombie_attack_zombie if @user.infected && @opponent.infected
+  return :human_attack_human if !@user.infected && !@opponent.infected
+
+  if @user.infected && @win
+    return :user_converts_H_to_Z
+  elsif @user.infected && !@win
+    return :user_fail_converts_H_to_Z
+  elsif @user.can_cure && @win
+    return :successful_cure
+  elsif @user.can_cure && !@win
+    return :failed_cure
+    ##new zombie?
+  elsif !@user.can_cure && !@win
+    return :no_cure_attempt
+  end
+end
+
     # RESPONSE_MESSAGES = {
     #   human_attack_self: "Attack yourself all you want, I guess...",
     #   human_attack_human: "Why are you wasting precious cures?!",

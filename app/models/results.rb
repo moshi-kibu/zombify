@@ -46,6 +46,18 @@ class Results
   }
 }
 
+def determine_responses
+  scenario = determine_scenario
+  message = SCENARIOS[scenario][:response_message]
+  post = SCENARIOS[scenario][:post_message]
+  user_state = SCENARIOS[scenario][:user_state]
+  opponent_state = SCENARIOS[scenario][:opponent_state]
+  create_message(message) if message
+  create_post(post) if post
+  update_user(user_state) if user_state
+  update_opponent(opponent_state) if opponent_state
+end
+
 def determine_scenario
   return :invalid_user_code if @opponent == "invalid"
   return :human_attack_self if @opponent == @user

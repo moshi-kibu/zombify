@@ -27,7 +27,7 @@ class Results
     @opponent = opponent
     @win = user_win
     verify_opponent
-end
+  end
 
   def verify_opponent
     if @opponent == "invalid"
@@ -50,7 +50,7 @@ end
   def determine_response
     return @response = RESPONSE_MESSAGES[:human_attack_self] if @opponent == @user
     return @response = RESPONSE_MESSAGES[:zombie_attack_zombie] if @user.infected && @opponent.infected
-    return @response =  RESPONSE_MESSAGES[:human_attack_human]if !@user.infected && !@opponent.infected
+    return @response = RESPONSE_MESSAGES[:human_attack_human]if !@user.infected && !@opponent.infected
 
     if @user.infected && @win ##zombie user bites human
       create_post(sprintf(POST_MESSAGES[:user_converts_H_to_Z][0], @user.name, @opponent.name), POST_MESSAGES[:user_converts_H_to_Z][1])
@@ -118,3 +118,11 @@ end
   end
 
 end
+
+
+
+
+
+
+
+# 

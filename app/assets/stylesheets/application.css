@@ -17,7 +17,7 @@
 }
 
 html p {
-  font-family: tahoma;
+  font-family: Tahoma, sans-serif;
 }
 
 
@@ -135,16 +135,12 @@ html a:hover {
 }
 
 html span {
-  font-family: tahoma;
+  font-family: Tahoma, sans-serif;
   font-size: 15px;
 }
 
 #battle_box label {
   color: white;
- }
-
-#checkin_box {
-  line-height: ;
 }
 
 /*
@@ -201,7 +197,7 @@ HOMEPAGE*/
 html .user_stats span{
   margin-top: 10%;
   font-size: 30px;
-  font-family: 'Rock Salt', cursive;
+  font-family: Tahoma, sans-serif;
   width: 50%;
   margin-left: 25%;
 }
@@ -260,7 +256,6 @@ html .user_stats span{
   filter: alpha(opacity=80);
 }
 .white_content {
-  /*text-align: center;*/
   display: none;
   position: fixed;
   top: 25%;
@@ -276,6 +271,14 @@ html .user_stats span{
 
 #rules_list {
   margin-top: 5%;
+  margin-left: 5%;
+  text-align: left;
+}
+
+#rules_list li {
+  font-family: Tahoma, sans-serif;
+  float: none;
+  padding: 1em;
 }
 
 #handle {
@@ -290,9 +293,13 @@ html .user_stats span{
   display:none;
   margin-left: 25%;
   width: 50%;
-  font-family: 'Rock Salt', cursive;
 }
 
+#checkin_box, #battle_box, #menu {
+  line-height: 1.5em;
+  font-family: Tahoma, sans-serif;
+  padding: 2em;
+}
 @media only screen and (min-device-width: 901px) and (max-device-width: 930px){
   html header {
     height: 90px;
@@ -313,7 +320,6 @@ html .user_stats span{
   }
 
   .white_content {
-    /*text-align: center;*/
     display: none;
     position: fixed;
     top: 1%;
@@ -396,7 +402,6 @@ html .user_stats span{
  }
 
   .white_content {
-    /*text-align: center;*/
     display: none;
     position: fixed;
     top: 0%;
@@ -468,7 +473,7 @@ html .user_stats span{
 }
 
 #demo li {
-  font-family: Tahoma;
+  font-family: Tahoma, sans-serif;
   margin-top: 1em;
 }
 

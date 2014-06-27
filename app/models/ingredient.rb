@@ -9,5 +9,19 @@ class Ingredient < ActiveRecord::Base
   def latlong
     [latitude.to_f, longitude.to_f]
   end
+
+  def self.three_found?
+    Ingredient.where(harvested: true).count == 3
+  end
+
+  def self.reset_all
+  	Ingredient.all.each do |ingredient|
+      ingredient.counter = 0
+      ingredient.discovered = false
+      ingredient.harvested = false
+      ingredient.save
+    end
+  end
+
 end
 

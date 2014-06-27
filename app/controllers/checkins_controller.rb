@@ -1,6 +1,5 @@
 class CheckinsController < ApplicationController
-  ACCEPTABLE_RANGE_TO_INGREDIENT = 10000
-
+  ACCEPTABLE_RANGE_TO_INGREDIENT = 10000000000000
 
   def new
     @user = User.find(session[:id])

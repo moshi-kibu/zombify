@@ -75,18 +75,11 @@ class Results
     return :human_attack_self if @opponent == @user
     return :zombie_attack_zombie if @user.infected && @opponent.infected
     return :human_attack_human if !@user.infected && !@opponent.infected
-
-    if @user.infected && @win
-      return :user_converts_H_to_Z
-    elsif @user.infected && !@win
-      return :user_fail_converts_H_to_Z
-    elsif @user.can_cure && @win
-      return :successful_cure
-    elsif @user.can_cure && !@win
-      return :failed_cure
-    elsif !@user.can_cure && !@win
-      return :no_cure_attempt
-    end
+    return :user_converts_H_to_Z if @user.infected && @win
+    return :user_fail_converts_H_to_Z if @user.infected && !@win
+    return :successful_cure if @user.can_cure && @win
+    return :failed_cure if @user.can_cure && !@win
+    return :no_cure_attempt if !@user.can_cure && !@win
   end
 
   def create_post(body, title, audience = "both")

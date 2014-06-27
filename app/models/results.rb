@@ -52,7 +52,7 @@ class Results
     @user = user
     @opponent = opponent
     @win = user_win
-    determine_response
+    determine_responses
   end
 
   private
@@ -63,7 +63,7 @@ class Results
     user_state = SCENARIOS[scenario][:user_state]
     opponent_state = SCENARIOS[scenario][:opponent_state]
 
-    create_post(post[0],post[1]) if post
+    create_post(sprintf(post[0],@user.name, @opponent.name),post[1]) if post
     update_user(user_state[0], user_state[1]) if user_state
     update_opponent(opponent_state[0], opponent_state[1]) if opponent_state
     check_stats
@@ -90,7 +90,7 @@ class Results
   end
 
   def create_post(body, title, audience = "both")
-    Post.create(body: sprintf(body, @user.name, @opponent.name), title: title, audience: audience)
+    Post.create(body: body, title: title, audience: audience)
   end
 
   def update_user(infected, points)
@@ -104,11 +104,11 @@ class Results
   def check_stats
     if Stats.all_human?
       @message = Message.human_messages.last
-      create_post(@message[1], @message[0], "human")
+      create_post(@message.description, @message.title, "human")
       Game.end
     elsif Stats.all_zombie?
       @message = Message.zombie_messages.last
-      create_post(@message[1], @message[0], "zombie")
+      create_post(@message.description, @message.title, "zombie")
       Game.end
     else
       remaining_stats(Stats.percent_zombies)
@@ -120,11 +120,11 @@ class Results
     human_messages = Message.human_messages
     case zombie_percentage
       when 90..93
-        create_post(zombie_messages[7][1],zombie_messages[7][0],"human")
-        create_post(human_messages[7][1], human_messages[7][0], "zombie")
+        create_post(zombie_messages[7].description,zombie_messages[7].title,"human")
+        create_post(human_messages[7].description, human_messages[7].title, "zombie")
       when 50..53
-        create_post(zombie_messages[6][1],zombie_messages[6][0],"zombie")
-        create_post(human_messages[6][1],human_messages[6][0],"human")
+        create_post(zombie_messages[6].description,zombie_messages[6].title,"zombie")
+        create_post(human_messages[6].description,human_messages[6].title,"human")
     end
   end
 

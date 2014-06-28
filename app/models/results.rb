@@ -21,7 +21,7 @@ class Results
     opponent_state: [true,0]
   },
   user_fail_converts_H_to_Z: {
-    response_message: "You are feeling dizzy. The human has escaped. You still crave brains... ",
+    response_message: "The human has escaped. You still crave brains... ",
     post_message: ["%s has let %s get away!","Near Miss"],
     user_state: [true,0],
     opponent_state: [false, 100]
@@ -33,7 +33,7 @@ class Results
     opponent_state: [false, 500]
   },
   failed_cure: {
-    response_message: "Your cure has failed. You feel your blood rising and crave delicious brains...",
+    response_message: "Your cure has failed. You feel a rage rising and crave delicious brains...",
     post_message: ["%s failed to cure %s and got infected!","Cure Failed"],
     user_state: [true,0],
     opponent_state: [true, 100]

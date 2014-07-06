@@ -49,6 +49,13 @@ class Checkin < ActiveRecord::Base
       @human_message.update_attributes(has_been_called: "true")
       #TODO: make next announcement message dependent on this harvest
     end
+
+    if Ingredient.three_found?
+      User.all_can_cure 
+      game.cure_found = true
+      game.save
+      Post.show_cure_createds
+    end
   end
 
   def self.checkins_required_to_harvest

@@ -51,9 +51,10 @@ class Checkin < ActiveRecord::Base
     end
 
     if Ingredient.three_found?
+      p "inside three found"
       User.all_can_cure 
-      game.cure_found = true
-      game.save
+      game.first.cure_found = true
+      game.first.save
       Post.show_cure_createds
     end
   end

@@ -19,7 +19,7 @@ UserAuthenticationAjax.prototype = {
   },
 
   initiateSignUp: function() {
-    console.log(this.view)
+    //console.log(this.view)
     getSignUp = $.ajax({
       url: '/users/new',
       method: 'get'

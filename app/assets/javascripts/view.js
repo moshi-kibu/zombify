@@ -42,7 +42,7 @@ View.prototype = {
 	},
 
 	renderZombie: function(){
-		console.log("I am a zombie")
+		//console.log("I am a zombie")
 		$("#checkin").css('display', 'none')
 		$("#checkin_mobile").css('display', 'none')
 		$("#confront").css('display', 'block')
@@ -50,7 +50,7 @@ View.prototype = {
 	},
 
 	renderHumanHarvest: function(){
-		console.log("I am a human who can harvest")
+		//console.log("I am a human who can harvest")
 		$("#confront").css('display', 'none')
 		$("#checkin").css('display', 'block')
 		$("#confront_mobile").css('display', 'none')
@@ -58,7 +58,7 @@ View.prototype = {
 	},
 
 	renderHumanCure: function(){
-		console.log("I am a human who can cure")
+		//console.log("I am a human who can cure")
 		$("#confront").css('display', 'block')
 		$("#confront").text("Cure")
 		$("#checkin").css('display', 'none')
@@ -68,7 +68,7 @@ View.prototype = {
 	},
 
 	renderHumanWaiting: function(){
-		console.log("I am a human who is waiting to harvest")
+		//console.log("I am a human who is waiting to harvest")
 		$("#confront").css('display', 'none')
 		$("#checkin").css('display', 'none')
 		$("#confront_mobile").css('display', 'none')

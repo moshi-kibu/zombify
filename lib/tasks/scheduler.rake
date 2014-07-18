@@ -17,6 +17,7 @@ task :create_demo => :environment do
 		ingredient.save
 		event_num += 1
 	end
+	Rake::Task["start_game"].execute
 end
 
 task :start_game => :environment do #ewwww needs refactor

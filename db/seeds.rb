@@ -12,8 +12,8 @@
 
 locations_lats_long = [[ 37.784173, -122.408087],[40.723255, -73.986153],[37.784816, -122.397387],[40.761835, -73.977303],[37.776645, -122.394187]]
 
-cure_ingredients = ["Emergen-C", "cyrillian daffodils", "whiteboard markers", "jalapenos", "glycerine"]
-locations = ["Market and Fifth", "Yerba Buena, behind the waterfall", "633 Folsom", "MoMa", "Fourth and King"]
+cure_ingredients = ["Emergen-C", "cyrillian daffodils", "whiteboard markers"]
+locations = ["Market and Fifth", "Yerba Buena, behind the waterfall", "633 Folsom"]
 
 locations.each_with_index do |location, index|
 	Ingredient.create(name: cure_ingredients[index],  code: rand(1000000), latitude: locations_lats_long[index][0], longitude: locations_lats_long[index][1], discovered: false, harvested: false, title: location, counter: 0, city: 'San Francisco', state: 'California', zip: 94122 )

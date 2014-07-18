@@ -59,6 +59,7 @@ pollingController.prototype = {
 
 	determineView: function(infectedState, gameState) {
 		if (infectedState == "true") {
+			//debugger
 			this.view.renderZombie()
 		} else if (infectedState == "false" && gameState == "harvest") {
 			this.view.renderHumanHarvest()

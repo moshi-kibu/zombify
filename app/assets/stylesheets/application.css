@@ -368,6 +368,10 @@ html .user_stats span{
     opacity: .9;
   }
 
+  #form {
+    display:inline;
+  }
+
   #login {
     margin: 40% 10% 10% 10%;
   }

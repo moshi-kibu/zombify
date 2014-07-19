@@ -363,7 +363,7 @@ html .user_stats span{
     opacity: .9;
   }
 
-  #sign_up {
+  #sign_up, #demo_button {
     width: 50%;
     opacity: .9;
   }
